@@ -1,42 +1,295 @@
-
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 春季關東賞花行程</title>
+<meta name="description" content="4/22–4/26 春季關東賞花 5日行程總覽">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-sans); }
-.container { padding: 1rem 0; }
-.trip-header { margin-bottom: 1.5rem; }
-.trip-title { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
-.trip-sub { font-size: 14px; color: var(--color-text-secondary); }
-.day-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); margin-bottom: 12px; overflow: hidden; }
-.day-header { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 0.5px solid var(--color-border-tertiary); }
-.day-badge { font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
-.day-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
-.day-meta { font-size: 12px; color: var(--color-text-secondary); margin-left: auto; white-space: nowrap; }
-.day-body { padding: 12px 16px; }
-.timeline { display: flex; flex-direction: column; gap: 8px; }
-.tl-item { display: flex; gap: 12px; align-items: flex-start; }
-.tl-time { font-size: 12px; color: var(--color-text-secondary); min-width: 52px; padding-top: 2px; font-variant-numeric: tabular-nums; }
-.tl-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
-.tl-content { flex: 1; }
-.tl-name { font-size: 13px; color: var(--color-text-primary); line-height: 1.4; }
-.tl-note { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; line-height: 1.4; }
-.warn-tag { display: inline-block; font-size: 10px; font-weight: 500; padding: 1px 6px; border-radius: 4px; margin-left: 4px; vertical-align: middle; background: var(--color-background-warning); color: var(--color-text-warning); }
-.rain-section { border-top: 0.5px dashed var(--color-border-tertiary); margin-top: 10px; padding-top: 10px; }
-.rain-label { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
-.section-divider { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); padding: 4px 0 2px; text-transform: uppercase; letter-spacing: 0.04em; border-top: 0.5px solid var(--color-border-tertiary); margin-top: 6px; }
-.tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
-.tag { font-size: 11px; padding: 2px 8px; border-radius: 12px; border: 0.5px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:         #f5f4f0;
+    --surface:    #ffffff;
+    --surface2:   #f8f7f4;
+    --border:     rgba(0,0,0,0.09);
+    --border2:    rgba(0,0,0,0.15);
+    --text:       #1a1a1a;
+    --text2:      #555;
+    --text3:      #888;
+    --mono:       'DM Mono', monospace;
+    --sans:       'Noto Sans TC', sans-serif;
+    --radius:     14px;
+    --radius-sm:  8px;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 32px 20px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(255,182,193,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(144,238,144,0.12) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .header-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .header-title {
+    font-size: clamp(22px, 5vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+  }
+  .header-pills {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    position: relative;
+  }
+  .hpill {
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 16px 60px;
+  }
+
+  /* ── DAY CARD ── */
+  .day-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    overflow: hidden;
+    animation: fadeUp 0.4s ease both;
+  }
+  .day-card:nth-child(1) { animation-delay: 0.05s; }
+  .day-card:nth-child(2) { animation-delay: 0.10s; }
+  .day-card:nth-child(3) { animation-delay: 0.15s; }
+  .day-card:nth-child(4) { animation-delay: 0.20s; }
+  .day-card:nth-child(5) { animation-delay: 0.25s; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .day-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+  .day-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+    min-width: 0;
+  }
+  .day-meta {
+    font-size: 11px;
+    color: var(--text3);
+    font-family: var(--mono);
+    white-space: nowrap;
+    margin-left: auto;
+  }
+  .day-body { padding: 14px 16px; }
+
+  /* ── TIMELINE ── */
+  .timeline { display: flex; flex-direction: column; gap: 10px; }
+
+  .tl-item {
+    display: flex;
+    gap: 11px;
+    align-items: flex-start;
+  }
+  .tl-time {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+    min-width: 46px;
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+  .tl-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5px;
+    flex-shrink: 0;
+  }
+  .tl-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .tl-content { flex: 1; min-width: 0; }
+  .tl-name {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+  .tl-note {
+    font-size: 11.5px;
+    color: var(--text3);
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+
+  .warn-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-left: 5px;
+    vertical-align: middle;
+    background: #FEF3C7;
+    color: #92400E;
+    font-family: var(--mono);
+  }
+
+  /* ── RAIN SECTION ── */
+  .rain-section {
+    border-top: 1px dashed rgba(0,0,0,0.1);
+    margin-top: 14px;
+    padding-top: 12px;
+  }
+  .rain-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #3b82f6;
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+  }
+  .rain-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #dbeafe;
+  }
+  .rain-section .tl-time { color: #93c5fd; }
+  .rain-section .tl-name { color: #1e3a8a; }
+  .rain-section .tl-note { color: #60a5fa; }
+
+  /* ── NOTICE BOX ── */
+  .notice-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin-top: 16px;
+    animation: fadeUp 0.4s 0.3s ease both;
+  }
+  .notice-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #92400E;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: var(--mono);
+    margin-bottom: 8px;
+  }
+  .notice-body {
+    font-size: 12px;
+    color: #78350f;
+    line-height: 2;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    color: var(--text3);
+    font-family: var(--mono);
+  }
+
+  @media (max-width: 480px) {
+    .day-title { font-size: 13px; }
+    .day-meta { display: none; }
+  }
 </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-tag">Spring Kanto 2026</div>
+  <h1 class="header-title">🌸 春季關東賞花行程</h1>
+  <p class="header-sub">4月22日（三）— 4月26日（日）</p>
+  <div class="header-pills">
+    <span class="hpill">6人同行</span>
+    <span class="hpill">HOTEL TOKYO TRIP・西日暮里 4晚</span>
+    <span class="hpill">JR Wide Pass</span>
+    <span class="hpill">CI100 去 ／ CI109 回</span>
+  </div>
+</header>
 
 <div class="container">
-  <div class="trip-header">
-    <div class="trip-title">2026 春季關東賞花行程</div>
-    <div class="trip-sub">4月22日（三）— 4月26日（日）・6人・HOTEL TOKYO TRIP 西日暮里（4晚）</div>
-  </div>
 
   <!-- DAY 1 -->
   <div class="day-card">
     <div class="day-header">
-      <span class="day-badge" style="background:#E6F1FB;color:#185FA5;">DAY 1</span>
+      <span class="day-badge" style="background:#E6F1FB;color:#1558A0;">DAY 1</span>
       <span class="day-title">4/22（三） 桃園 → 東京・秋葉原之夜</span>
       <span class="day-meta">晴時多雲 24℃</span>
     </div>
@@ -44,23 +297,32 @@ body { font-family: var(--font-sans); }
       <div class="timeline">
         <div class="tl-item">
           <span class="tl-time">08:50</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
           <div class="tl-content"><div class="tl-name">CI100 桃園起飛（第2航廈）</div></div>
         </div>
         <div class="tl-item">
           <span class="tl-time">13:15</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">抵達成田 NRT 第2航廈</div><div class="tl-note">兌換 JR PASS → Skyliner → 上野換乘山手線 → 西日暮里</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">抵達成田 NRT 第2航廈</div>
+            <div class="tl-note">兌換 JR PASS → Skyliner → 上野換乘山手線 → 西日暮里</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">17:00</span>
-          <div class="tl-dot" style="background:#1D9E75;"></div>
-          <div class="tl-content"><div class="tl-name">HOTEL TOKYO TRIP 辦入住</div><div class="tl-note">西日暮里・四晚連住免換房・現金繳 1000円/人住宿費</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#1D9E75;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">HOTEL TOKYO TRIP 辦入住</div>
+            <div class="tl-note">西日暮里・四晚連住免換房・現金繳 1,000円/人住宿費</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">18:30</span>
-          <div class="tl-dot" style="background:#BA7517;"></div>
-          <div class="tl-content"><div class="tl-name">秋葉原採買 → Yodobashi Akiba 8F 晚餐</div><div class="tl-note">松本清 / UQ / GU・晚餐：インドカリーダイニング Cobara-Hetta</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#BA7517;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">秋葉原採買 → Yodobashi Akiba 8F 晚餐</div>
+            <div class="tl-note">松本清 / UQ / GU・晚餐：インドカリーダイニング Cobara-Hetta</div>
+          </div>
         </div>
       </div>
     </div>
@@ -69,51 +331,67 @@ body { font-family: var(--font-sans); }
   <!-- DAY 2 -->
   <div class="day-card">
     <div class="day-header">
-      <span class="day-badge" style="background:#EAF3DE;color:#3B6D11;">DAY 2</span>
+      <span class="day-badge" style="background:#EAF3DE;color:#2D6A1F;">DAY 2</span>
       <span class="day-title">4/23（四） 越後湯澤賞雪山櫻 → 輕井澤銀座</span>
-      <span class="day-meta">陰天 40% ・22℃</span>
+      <span class="day-meta">陰天 40% · 22℃</span>
     </div>
     <div class="day-body">
       <div class="timeline">
         <div class="tl-item">
-          <span class="tl-time">06:28</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">西日暮里 → 上野（山手線）→ 越後湯澤</div><div class="tl-note">07:10 上越新幹線 とき 303號（5車 13-15 D/E席・預約 E84221）</div></div>
+          <span class="tl-time">06:38</span>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">西日暮里 → 上野（山手線）→ 越後湯澤</div>
+            <div class="tl-note">07:10 上越新幹線 とき 303號（5車 13-15 D/E席・預約 E84221）</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">08:45</span>
-          <div class="tl-dot" style="background:#639922;"></div>
-          <div class="tl-content"><div class="tl-name">湯沢中央公園賞櫻（約2小時）</div><div class="tl-note">湖景・雪山倒影・染井吉野・枝垂櫻・葫蘆池紅橋</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#639922;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">湯沢中央公園賞櫻（約2小時）</div>
+            <div class="tl-note">湖景・雪山倒影・染井吉野・枝垂櫻・葫蘆池紅橋</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">10:59</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">大源太線公車 → 越後湯澤站<span class="warn-tag">⚠ 僅現金</span></div><div class="tl-note">10:50前務必到湯沢役場前站牌・錯過需步行18分鐘</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">大源太線公車 → 越後湯澤站<span class="warn-tag">⚠ 僅現金</span></div>
+            <div class="tl-note">10:50前務必到湯沢役場前站牌・錯過需步行18分鐘</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">11:04</span>
-          <div class="tl-dot" style="background:#BA7517;"></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#BA7517;"></div></div>
           <div class="tl-content"><div class="tl-name">越後湯澤站周邊午餐＆逛街</div></div>
         </div>
         <div class="tl-item">
           <span class="tl-time">13:13</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">越後湯澤 → 輕井澤（上越新幹線転 高崎）</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">越後湯澤 → 輕井澤（上越新幹線轉 高崎）</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">14:25</span>
-          <div class="tl-dot" style="background:#639922;"></div>
-          <div class="tl-content"><div class="tl-name">矢ヶ崎公園・舊輕井澤銀座通・聖保羅天主教堂賞櫻</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#639922;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">矢ヶ崎公園・舊輕井澤銀座通・聖保羅天主教堂賞櫻</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">17:00</span>
-          <div class="tl-dot" style="background:#BA7517;"></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#BA7517;"></div></div>
           <div class="tl-content"><div class="tl-name">王子大飯店賞櫻＋Outlet 購物＋晚餐</div></div>
         </div>
         <div class="tl-item">
           <span class="tl-time">18:09</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">輕井澤 → 上野（北陸新幹線 はくたか 570號）</div><div class="tl-note">10車 6-8 D/E席・預約 E70535・19:06抵上野</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">輕井澤 → 上野（北陸新幹線 はくたか 570號）</div>
+            <div class="tl-note">10車 6-8 D/E席・預約 E70535・19:06抵上野</div>
+          </div>
         </div>
       </div>
       <div class="rain-section">
@@ -121,23 +399,32 @@ body { font-family: var(--font-sans); }
         <div class="timeline">
           <div class="tl-item">
             <span class="tl-time">08:45</span>
-            <div class="tl-dot" style="background:#639922;"></div>
+            <div class="tl-track"><div class="tl-dot" style="background:#93c5fd;"></div></div>
             <div class="tl-content"><div class="tl-name">越後湯澤賞櫻（同正常行程）</div></div>
           </div>
           <div class="tl-item">
             <span class="tl-time">13:13</span>
-            <div class="tl-dot" style="background:#378ADD;"></div>
-            <div class="tl-content"><div class="tl-name">越後湯澤 → 足利花卉公園（改前往足利）</div><div class="tl-note">→ 高崎 → 小山 → JR兩毛線 → 足利花卉公園站（約14:37抵）</div></div>
+            <div class="tl-track"><div class="tl-dot" style="background:#93c5fd;"></div></div>
+            <div class="tl-content">
+              <div class="tl-name">越後湯澤 → 足利花卉公園（改前往足利）</div>
+              <div class="tl-note">→ 高崎 → 小山 → JR兩毛線 → 足利花卉公園站（約14:37抵）</div>
+            </div>
           </div>
           <div class="tl-item">
             <span class="tl-time">16:00</span>
-            <div class="tl-dot" style="background:#639922;"></div>
-            <div class="tl-content"><div class="tl-name">足利花卉公園 大藤節（日景+夜景）</div><div class="tl-note">門票 2300日幣・紫藤霜淇淋・17:30點燈・18:15黃金時刻</div></div>
+            <div class="tl-track"><div class="tl-dot" style="background:#93c5fd;"></div></div>
+            <div class="tl-content">
+              <div class="tl-name">足利花卉公園 大藤節（日景+夜景）</div>
+              <div class="tl-note">門票 2,300日幣・紫藤霜淇淋・17:30點燈・18:15黃金時刻</div>
+            </div>
           </div>
           <div class="tl-item">
             <span class="tl-time">19:20</span>
-            <div class="tl-dot" style="background:#378ADD;"></div>
-            <div class="tl-content"><div class="tl-name">西門集合撤退 → 小山 → 上野</div><div class="tl-note">Yamabiko 220號（預約 E44595・8車 2/4/7D/E席）・21:38抵上野</div></div>
+            <div class="tl-track"><div class="tl-dot" style="background:#93c5fd;"></div></div>
+            <div class="tl-content">
+              <div class="tl-name">西門集合撤退 → 小山 → 上野</div>
+              <div class="tl-note">Yamabiko 220號（預約 E44595・8車 2/4/7D/E席）・21:38抵上野</div>
+            </div>
           </div>
         </div>
       </div>
@@ -149,39 +436,56 @@ body { font-family: var(--font-sans); }
     <div class="day-header">
       <span class="day-badge" style="background:#FAEEDA;color:#854F0B;">DAY 3</span>
       <span class="day-title">4/24（五） 足利夢幻夜藤（大藤節）</span>
-      <span class="day-meta">多雲短暫雨 50% ・19℃</span>
+      <span class="day-meta">多雲短暫雨 50% · 19℃</span>
     </div>
     <div class="day-body">
       <div class="timeline">
         <div class="tl-item">
           <span class="tl-time">11:00</span>
-          <div class="tl-dot" style="background:#BA7517;"></div>
-          <div class="tl-content"><div class="tl-name">上野 HARBS 午餐</div><div class="tl-note">東京都台東区上野３−２４−６ パルコヤ２F</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#BA7517;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">HARBS 午餐</div>
+            <div class="tl-note">東京都台東区上野 パルコヤ 2F</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">13:00</span>
-          <div class="tl-dot" style="background:#E24B4A;"></div>
-          <div class="tl-content"><div class="tl-name">上野站 20號月台集合<span class="warn-tag">集合點</span></div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#E24B4A;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">上野站 20號月台集合<span class="warn-tag">集合點</span></div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">13:18</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">上野 → 小山（東北新幹線 なすの 259號）</div><div class="tl-note">5車10D/E席（2人・預約 E63394）→ 轉 JR兩毛線 → 14:36抵足利</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">上野 → 小山（東北新幹線 なすの 259號）</div>
+            <div class="tl-note">5車10D/E席（2人・預約 E63394）→ 轉 JR兩毛線 → 14:36抵足利</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">14:45</span>
-          <div class="tl-dot" style="background:#639922;"></div>
-          <div class="tl-content"><div class="tl-name">足利花卉公園入園（大藤節 4/12–5/18）</div><div class="tl-note">日景賞花 → 17:00黃昏用餐 → 17:30正式點燈</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#639922;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">足利花卉公園入園（大藤節 4/12–5/18）</div>
+            <div class="tl-note">日景賞花 → 17:00黃昏用餐 → 17:30正式點燈</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">18:15</span>
-          <div class="tl-dot" style="background:#BA7517;"></div>
-          <div class="tl-content"><div class="tl-name">黃金魔幻時刻 Magic Hour</div><div class="tl-note">最佳位置：西大藤池塘邊・天空轉深藍最美時段</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#BA7517;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">黃金魔幻時刻 Magic Hour</div>
+            <div class="tl-note">最佳位置：西大藤池塘邊・天空轉深藍最美時段</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">18:35</span>
-          <div class="tl-dot" style="background:#E24B4A;"></div>
-          <div class="tl-content"><div class="tl-name">西門出口集合撤退<span class="warn-tag">⚠ 準時</span></div><div class="tl-note">18:46兩毛線 → 19:23小山 → 20:01新幹線 やまびこ 218號（6車 7-9 D/E席・預約 E29919）→ 20:38上野</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#E24B4A;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">西門出口集合撤退<span class="warn-tag">⚠ 準時</span></div>
+            <div class="tl-note">18:46兩毛線 → 19:23小山 → 20:01新幹線 やまびこ 218號（6車 7-9 D/E席・預約 E29919）→ 20:38上野</div>
+          </div>
         </div>
       </div>
       <div class="rain-section">
@@ -189,18 +493,27 @@ body { font-family: var(--font-sans); }
         <div class="timeline">
           <div class="tl-item">
             <span class="tl-time">09:10</span>
-            <div class="tl-dot" style="background:#378ADD;"></div>
-            <div class="tl-content"><div class="tl-name">上野 → 輕井澤（Asama あさま 605號）</div><div class="tl-note">4車 11/13/14 D/E席・預約 E28434</div></div>
+            <div class="tl-track"><div class="tl-dot" style="background:#93c5fd;"></div></div>
+            <div class="tl-content">
+              <div class="tl-name">上野 → 輕井澤（Asama あさま 605號）</div>
+              <div class="tl-note">4車 11/13/14 D/E席・預約 E28434</div>
+            </div>
           </div>
           <div class="tl-item">
             <span class="tl-time">10:30</span>
-            <div class="tl-dot" style="background:#639922;"></div>
-            <div class="tl-content"><div class="tl-name">輕井澤賞櫻購物（替代行程）</div><div class="tl-note">矢ヶ崎公園・王子 Outlet・聖保羅教堂・舊輕井澤銀座</div></div>
+            <div class="tl-track"><div class="tl-dot" style="background:#93c5fd;"></div></div>
+            <div class="tl-content">
+              <div class="tl-name">輕井澤賞櫻購物（替代行程）</div>
+              <div class="tl-note">矢ヶ崎公園・王子 Outlet・聖保羅教堂・舊輕井澤銀座</div>
+            </div>
           </div>
           <div class="tl-item">
             <span class="tl-time">16:23</span>
-            <div class="tl-dot" style="background:#378ADD;"></div>
-            <div class="tl-content"><div class="tl-name">輕井澤 → 東京（Asama あさま 624號）</div><div class="tl-note">5車 3/4/6 D/E席・預約 E03336・17:28抵</div></div>
+            <div class="tl-track"><div class="tl-dot" style="background:#93c5fd;"></div></div>
+            <div class="tl-content">
+              <div class="tl-name">輕井澤 → 東京（Asama あさま 624號）</div>
+              <div class="tl-note">5車 3/4/6 D/E席・預約 E03336・17:28抵</div>
+            </div>
           </div>
         </div>
       </div>
@@ -210,56 +523,88 @@ body { font-family: var(--font-sans); }
   <!-- DAY 4 -->
   <div class="day-card">
     <div class="day-header">
-      <span class="day-badge" style="background:#E1F5EE;color:#0F6E56;">DAY 4</span>
+      <span class="day-badge" style="background:#E1F5EE;color:#0A5C46;">DAY 4</span>
       <span class="day-title">4/25（六） 日立玻璃車站 → 常陸粉蝶花海 → 那珂湊海鮮</span>
-      <span class="day-meta">陰天 40% ・18℃</span>
+      <span class="day-meta">陰天 40% · 18℃</span>
     </div>
     <div class="day-body">
       <div class="timeline">
         <div class="tl-item">
+          <span class="tl-time">06:28</span>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content"><div class="tl-name">西日暮里 → 上野（山手線）</div></div>
+        </div>
+        <div class="tl-item">
           <span class="tl-time">07:00</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">上野 → 日立（特急ひたち 1號）</div><div class="tl-note">7車12/13 C/D席（4人・預約 E83778）→ 08:34抵達</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">上野 → 日立（特急ひたち 1號）</div>
+            <div class="tl-note">7車12/13 C/D席（4人・預約 E83778）→ 08:34抵達</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">08:34</span>
-          <div class="tl-dot" style="background:#639922;"></div>
-          <div class="tl-content"><div class="tl-name">日立懸浮玻璃車站打卡（停留約1.5小時）</div><div class="tl-note">Sea Birds Cafe 外帶咖啡看海・必拍海景月台</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#639922;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">日立懸浮玻璃車站打卡（停留約1.5小時）</div>
+            <div class="tl-note">Sea Birds Cafe 外帶咖啡看海・必拍海景月台</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">10:02</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">日立 → 勝田（特急ひたち 8號）</div><div class="tl-note">7車 5/6 C/D席（4人・預約 E11244）</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">日立 → 勝田（特急ひたち 8號）</div>
+            <div class="tl-note">7車 5/6 C/D席（4人・預約 E11244）</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">10:40</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">勝田站東口搭巴士 → 公園西口/南口<span class="warn-tag">⚠ 不支援IC卡</span></div><div class="tl-note">成人 ¥600・7-11 可買套票（巴士+門票 ¥800/人 / 長者 ¥560）</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">勝田站東口搭巴士 → 公園西口/南口<span class="warn-tag">⚠ 不支援IC卡</span></div>
+            <div class="tl-note">成人 ¥600・7-11 可買套票（巴士+門票 ¥800/人 / 長者 ¥560）</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">11:10</span>
-          <div class="tl-dot" style="background:#1D9E75;"></div>
-          <div class="tl-content"><div class="tl-name">國營常陸海濱公園・見晴之丘粉蝶花海</div><div class="tl-note">停留約2.5小時・藍色花海全盛期</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#1D9E75;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">國營常陸海濱公園・見晴之丘粉蝶花海</div>
+            <div class="tl-note">停留約2.5小時・藍色花海全盛期</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">13:40</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">免費接駁車 → 阿字浦站 → 那珂湊站<span class="warn-tag">⚠ 全線現金</span></div><div class="tl-note">常陸那珂海濱鐵道・¥260/人・不收IC卡</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">免費接駁車 → 阿字浦站 → 那珂湊站<span class="warn-tag">⚠ 全線現金</span></div>
+            <div class="tl-note">常陸那珂海濱鐵道・¥260/人・不收IC卡</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">14:20</span>
-          <div class="tl-dot" style="background:#BA7517;"></div>
-          <div class="tl-content"><div class="tl-name">那珂湊魚市場海鮮大餐（停留約1.5–2小時）</div><div class="tl-note">現剖生蠔・蟹膏燒・迴轉壽司・3–4人自由行動・16:00集合</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#BA7517;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">那珂湊魚市場海鮮大餐（停留約1.5–2小時）</div>
+            <div class="tl-note">現剖生蠔・蟹膏燒・迴轉壽司・3–4人自由行動・16:00集合</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">17:21</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">勝田 → 東京（特急ひたち 22號）</div><div class="tl-note">7車12/13 C/D席（4人・預約 E83394）→ 18:45東京</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">勝田 → 東京（特急ひたち 22號）</div>
+            <div class="tl-note">7車12/13 C/D席（4人・預約 E83394）→ 18:45東京</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">19:00</span>
-          <div class="tl-dot" style="background:#BA7517;"></div>
-          <div class="tl-content"><div class="tl-name">東京車站/有樂町逛街＋晚餐</div><div class="tl-note">首選：Depot ナポリタン（東京站地下1F グランスタ東京）</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#BA7517;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">東京車站/有樂町逛街＋晚餐</div>
+            <div class="tl-note">首選：Depot ナポリタン（東京站地下1F グランスタ東京）</div>
+          </div>
         </div>
       </div>
     </div>
@@ -268,43 +613,59 @@ body { font-family: var(--font-sans); }
   <!-- DAY 5 -->
   <div class="day-card">
     <div class="day-header">
-      <span class="day-badge" style="background:#EEEDFE;color:#534AB7;">DAY 5</span>
+      <span class="day-badge" style="background:#EEEDFE;color:#4338CA;">DAY 5</span>
       <span class="day-title">4/26（日） 自主購物 → 返台</span>
-      <span class="day-meta">陰天偶陣晴 30% ・21℃</span>
+      <span class="day-meta">陰天偶陣晴 30% · 21℃</span>
     </div>
     <div class="day-body">
       <div class="timeline">
         <div class="tl-item">
           <span class="tl-time">上午</span>
-          <div class="tl-dot" style="background:#7F77DD;"></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#7F77DD;"></div></div>
           <div class="tl-content"><div class="tl-name">市區彈性自主購物・飯店打包戰利品</div></div>
         </div>
         <div class="tl-item">
           <span class="tl-time">11:00</span>
-          <div class="tl-dot" style="background:#1D9E75;"></div>
-          <div class="tl-content"><div class="tl-name">HOTEL TOKYO TRIP 退房（行李可寄放）</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#1D9E75;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">HOTEL TOKYO TRIP 退房</div>
+            <div class="tl-note">行李可寄放・西日暮里</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">16:20</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">京成上野 → 成田機場第2航廈（Skyliner）</div><div class="tl-note">17:01抵達・Klook QR Code</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">京成上野 → 成田機場第2航廈（Skyliner）</div>
+            <div class="tl-note">17:01抵達・Klook QR Code</div>
+          </div>
         </div>
         <div class="tl-item">
           <span class="tl-time">20:00</span>
-          <div class="tl-dot" style="background:#378ADD;"></div>
-          <div class="tl-content"><div class="tl-name">CI109 東京起飛 → 22:45抵台北桃園第2航廈</div><div class="tl-note">座位 22A/22B・實體登機證備報帳用</div></div>
+          <div class="tl-track"><div class="tl-dot" style="background:#378ADD;"></div></div>
+          <div class="tl-content">
+            <div class="tl-name">CI109 東京起飛 → 22:45抵台北桃園第2航廈</div>
+            <div class="tl-note">座位 22A/22B・實體登機證備報帳用</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div style="margin-top: 16px; padding: 12px 16px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary);">
-    <div style="font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 8px;">全程重要現金注意事項</div>
-    <div style="font-size: 12px; color: var(--color-text-secondary); line-height: 1.8;">
-      ⚠ 越後湯澤大源太線公車 → 僅收現金（備零錢 500/100円）<br>
-      ⚠ 常陸那珂海濱鐵道 → 全線不收IC卡，¥260 阿字浦→那珂湊 / ¥350 那珂湊→勝田<br>
-      ⚠ 勝田→公園巴士 → 不支援Suica/PASMO（現金或信用卡感應）<br>
-      ⚠ 草輕交通巴士 → 僅收現金（輕井澤雨備方案適用）
+  <!-- Notice -->
+  <div class="notice-box">
+    <div class="notice-title">⚠ 全程現金注意事項</div>
+    <div class="notice-body">
+      越後湯澤大源太線公車 → 僅收現金（備零錢 500/100円）<br>
+      常陸那珂海濱鐵道 → 全線不收IC卡，¥260 阿字浦→那珂湊 / ¥350 那珂湊→勝田<br>
+      勝田→公園巴士 → 不支援 Suica/PASMO（現金或信用卡感應）<br>
+      草輕交通巴士 → 僅收現金（輕井澤雨備方案適用）
     </div>
   </div>
+
 </div>
+
+<footer class="site-footer">2026 春季關東賞花・行程總覽</footer>
+
+</body>
+</html>
